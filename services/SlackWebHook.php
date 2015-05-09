@@ -6,14 +6,8 @@ use GuzzleHttp\Client;
 
 class SlackWebHook
 {
-
     const ICON_URL = 'https://slack.global.ssl.fastly.net/12d4/img/services/jira_48.png';
     const BOT_NAME = 'Jira';
-
-    public function __construct()
-    {
-
-    }
 
     public function send($slackWebHook, $data)
     {
