@@ -1,4 +1,7 @@
 {
+    "autoload": {
+      "psr-4": { "Services\\": "services/"}
+    },
     "require": {
         "silex/silex": "~1.1",
         "symfony/yaml": "2.6.6",
