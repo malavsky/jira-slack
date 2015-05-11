@@ -18,6 +18,11 @@ class WebHookAdapter
     public function prepareAndSend($jiraContentBody, $slackWebHook)
     {
         $preparedData = $this->jiraWebHook->parse($jiraContentBody);
+
+        if (!$preparedData) {
+            throw new \ErrorException('Data not valid');
+        }
+
         $this->slackWebHook->send($slackWebHook, $preparedData);
     }
 }

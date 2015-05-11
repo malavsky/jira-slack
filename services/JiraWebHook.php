@@ -18,7 +18,10 @@ class JiraWebHook
 
     public function parse($jsonBody)
     {
-        return $this->prepareData(json_decode($jsonBody));
+        if ($jiraData = json_decode($jsonBody)) {
+            return $this->prepareData($jiraData);
+        }
+        return false;
     }
 
     private function prepareData($jiraData)

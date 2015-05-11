@@ -6,8 +6,16 @@ $app->post('/send/event/{project}', function (Silex\Application $app, $project) 
     }
 
     $webHookAdapter = $app['webHooksAdapter'];
-    $webHookAdapter->prepareAndSend($app['request']->getContent(), $slackWebHook);
-    return 'Ok';
+
+    $requestBody = $app['request']->getContent();
+
+    if ($requestBody) {
+        $webHookAdapter->prepareAndSend($requestBody, $slackWebHook);
+        return 'Ok';
+    }
+
+    return 'Some error happened';
+
 });
 
 $app->get('/project/list/{token}', function (Silex\Application $app, $token) {
