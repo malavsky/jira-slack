@@ -15,6 +15,7 @@ class JiraWebHook
     const UPDATE_TEXT = 'Changed status by';
     const COMMENT_TEXT = 'Added comment by';
     const CREATE_TEXT = 'Created issue by';
+    const DELETE_TEXT = 'Deleted issue by';
 
     public function parse($jsonBody)
     {
@@ -37,6 +38,10 @@ class JiraWebHook
                 break;
             case static::UPDATE_EVENT:
                 $data = $this->prepareDataForUpdateEvent($data, $jiraData);
+                break;
+            case static::DELETE_EVENT:
+                $data['text'] = static::DELETE_TEXT;
+                break;
         }
 
         return $data;
