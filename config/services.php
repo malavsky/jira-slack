@@ -1,12 +1,14 @@
 <?php
 
-use Services\ProjectToSlackWebHookResolver;
+use Services\ProjectManager;
 use Services\JiraWebHook;
 use Services\SlackWebHook;
 use Services\WebHookAdapter;
 
-$app['projectToSlackWebHook'] = $app->share(function () {
-    return new ProjectToSlackWebHookResolver(new Symfony\Component\Yaml\Yaml());
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+
+$app['projectManager'] = $app->share(function () {
+    return new ProjectManager(new Symfony\Component\Yaml\Yaml());
 });
 
 $app['jiraWebHook'] = $app->share(function () {

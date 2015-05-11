@@ -1,3 +1,5 @@
 vendor
 *~
 .idea
+config/yml/config.yml
+config/yml/projectToSlackWebHook.yml
