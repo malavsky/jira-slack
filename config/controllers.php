@@ -128,6 +128,6 @@ $app->get('/project/create/{name}/{token}', function (Silex\Application $app, $n
 
 function checkToken($projectManager, $token) {
     if (!$projectManager->checkToken($token)) {
-        return 'Token is invalid. Please check your security token.';
+        throw new \Exception('Token is invalid. Please check your security token.');
     }
 }
