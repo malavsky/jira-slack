@@ -49,7 +49,7 @@ $app->post('/project/edit/{name}/{token}', function (Silex\Application $app, $na
     checkToken($projectManager, $token);
 
     $request = $app['request'];
-    $webHookUrl = $request->request->get('webHookUrl');
+    $webHookUrl = trim($request->request->get('webHookUrl'));
 
     if (!$webHookUrl) {
         return $projectManager->editProject($name, $app, 'Сan not be empty');
@@ -81,8 +81,8 @@ $app->post('/project/create/{token}', function (Silex\Application $app, $token) 
     checkToken($projectManager, $token);
 
     $request = $app['request'];
-    $webHookUrl = $request->request->get('webHookUrl');
-    $projectName = $request->request->get('projectName');
+    $webHookUrl = trim($request->request->get('webHookUrl'));
+    $projectName = trim($request->request->get('projectName'));
     $error = '';
 
     if (!$webHookUrl) {
