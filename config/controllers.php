@@ -111,7 +111,7 @@ $app->post('/project/create/{token}', function (Silex\Application $app, $token) 
 
 });
 
-$app->get('/project/create/{name}/{token}', function (Silex\Application $app, $name, $token) {
+$app->get('/project/delete/{name}/{token}', function (Silex\Application $app, $name, $token) {
     $projectManager = $app['projectManager'];
     checkToken($projectManager, $token);
 
