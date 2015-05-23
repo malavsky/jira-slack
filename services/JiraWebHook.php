@@ -29,8 +29,9 @@ class JiraWebHook
     {
         $data = [];
 
-        $data['user']  = $this->getUserData($jiraData);
-        $data['issue'] = $this->getIssueData($jiraData);
+        $data['user']      = $this->getUserData($jiraData);
+        $data['issue']     = $this->getIssueData($jiraData);
+        $data['changelog'] = $this->getChangeLogData($jiraData);
 
         switch ($jiraData->webhookEvent) {
             case static::CREATE_EVENT:
@@ -51,13 +52,13 @@ class JiraWebHook
     {
         if (isset($jiraData->comment) && isset($jiraData->changelog)) {
             $data['comment'] = $this->getCommentData($jiraData);
-            $data['status']  = $this->getChangeLogData($jiraData);
+            $data['status']  = $this->getStatusData($jiraData);
             $data['text']    = static::UPDATE_WITH_COMMENT_TEXT;
         } elseif (isset($jiraData->comment)) {
             $data['comment'] = $this->getCommentData($jiraData);
             $data['text']    = static::COMMENT_TEXT;
         } elseif (isset($jiraData->changelog)) {
-            $data['status'] = $this->getChangeLogData($jiraData);
+            $data['status'] = $this->getStatusData($jiraData);
             $data['text']   = static::UPDATE_TEXT;
         }
 
@@ -90,7 +91,7 @@ class JiraWebHook
         ];
     }
 
-    private function getChangeLogData($jiraData)
+    private function getStatusData($jiraData)
     {
         return [
             'name' => $jiraData->issue->fields->status->name,
@@ -102,6 +103,18 @@ class JiraWebHook
     {
         return [
             'name' => $jiraData->user->displayName
+        ];
+    }
+
+    private function getChangeLogData($jiraData)
+    {
+        $items = [];
+        foreach ($jiraData->changelog->items as $item) {
+            $items[] = (array)$item;
+        }
+
+        return [
+            'items' => $items
         ];
     }
 

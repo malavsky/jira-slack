@@ -58,24 +58,19 @@ class SlackWebHook
             ];
         }
 
-        if (isset($data['status'])) {
+        foreach ($data['changelog']['items'] as $item) {
             $fields[] = [
-                'title' => 'Status',
-                'value' => $data['status']['name'],
+                'title' => 'Previous ' . $item['field'],
+                'value' => $item['fromString'],
+                'short' => true
+            ];
+
+            $fields[] = [
+                'title' => 'New ' . $item['field'],
+                'value' => $item['toString'],
+                'short' => true
             ];
         }
-
-        $fields[] = [
-            'title' => 'Type',
-            'value' => $data['issue']['type']['name'],
-            'short' => true
-        ];
-
-        $fields[] = [
-            'title' => 'Priority',
-            'value' => $data['issue']['priority']['name'],
-            'short' => true
-        ];
 
         return $fields;
     }
