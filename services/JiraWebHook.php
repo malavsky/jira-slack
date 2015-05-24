@@ -31,7 +31,6 @@ class JiraWebHook
 
         $data['user']      = $this->getUserData($jiraData);
         $data['issue']     = $this->getIssueData($jiraData);
-        $data['changelog'] = $this->getChangeLogData($jiraData);
 
         switch ($jiraData->webhookEvent) {
             case static::CREATE_EVENT:
@@ -52,13 +51,13 @@ class JiraWebHook
     {
         if (isset($jiraData->comment) && isset($jiraData->changelog)) {
             $data['comment'] = $this->getCommentData($jiraData);
-            $data['status']  = $this->getStatusData($jiraData);
+            $data['changelog'] = $this->getChangeLogData($jiraData);
             $data['text']    = static::UPDATE_WITH_COMMENT_TEXT;
         } elseif (isset($jiraData->comment)) {
             $data['comment'] = $this->getCommentData($jiraData);
             $data['text']    = static::COMMENT_TEXT;
         } elseif (isset($jiraData->changelog)) {
-            $data['status'] = $this->getStatusData($jiraData);
+            $data['changelog'] = $this->getChangeLogData($jiraData);
             $data['text']   = static::UPDATE_TEXT;
         }
 
