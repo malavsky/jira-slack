@@ -1,6 +1,6 @@
 <?php
 
-namespace services;
+namespace Services;
 
 
 class JiraWebHook
