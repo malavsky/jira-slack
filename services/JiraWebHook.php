@@ -29,8 +29,8 @@ class JiraWebHook
     {
         $data = [];
 
-        $data['user']      = $this->getUserData($jiraData);
-        $data['issue']     = $this->getIssueData($jiraData);
+        $data['user']  = $this->getUserData($jiraData);
+        $data['issue'] = $this->getIssueData($jiraData);
 
         switch ($jiraData->webhookEvent) {
             case static::CREATE_EVENT:
@@ -49,16 +49,19 @@ class JiraWebHook
 
     private function prepareDataForUpdateEvent($data, $jiraData)
     {
-        if (isset($jiraData->comment) && isset($jiraData->changelog)) {
-            $data['comment'] = $this->getCommentData($jiraData);
-            $data['changelog'] = $this->getChangeLogData($jiraData);
-            $data['text']    = static::UPDATE_WITH_COMMENT_TEXT;
-        } elseif (isset($jiraData->comment)) {
+        if (isset($jiraData->comment)) {
             $data['comment'] = $this->getCommentData($jiraData);
             $data['text']    = static::COMMENT_TEXT;
-        } elseif (isset($jiraData->changelog)) {
+        }
+
+        if (isset($jiraData->changelog)) {
             $data['changelog'] = $this->getChangeLogData($jiraData);
-            $data['text']   = static::UPDATE_TEXT;
+            $data['text']      = static::UPDATE_TEXT;
+        }
+
+        // Override text
+        if (isset($jiraData->comment) && isset($jiraData->changelog)) {
+            $data['text'] = static::UPDATE_WITH_COMMENT_TEXT;
         }
 
         return $data;
