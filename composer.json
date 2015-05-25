@@ -1,6 +1,6 @@
 {
     "autoload": {
-      "psr-4": { "Services\\": "services/"}
+        "psr-4": {"Services\\": "services/"}
     },
     "require": {
         "silex/silex": "~1.1",
@@ -8,6 +8,7 @@
         "guzzlehttp/guzzle": "5.2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.6.*"
+        "phpunit/phpunit": "4.6.*",
+        "satooshi/php-coveralls": "~0.6@stable"
     }
 }
