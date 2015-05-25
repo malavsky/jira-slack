@@ -16,9 +16,9 @@ return [
             'icon' => 'http://jira.example.com/images/icons/priorities/major.png'
         ]
     ],
-    'comment' => [
+    'comment'   => [
         'author' => 'iantipenko',
-        'body' => 'Example comment'
+        'body'   => 'Example comment'
     ],
     'changelog' => [
         'items' => [

@@ -1,12 +1,12 @@
 <?php
 return [
-    'user'  => [
+    'user'    => [
         'name' => 'iantipenko'
     ],
-    'issue' => [
-        'number'   => 'PASS-5',
-        'link'     => 'http://jira.example.com/browse/PASS-5',
-        'summary'  => 'test',
+    'issue'   => [
+        'number'   => 'PAS-3',
+        'link'     => 'http://jira.example.com/browse/PAS-3',
+        'summary'  => 'Test2',
         'type'     => [
             'name' => 'Bug',
             'icon' => 'http://jira.example.com/images/icons/issuetypes/bug.png'
@@ -16,5 +16,9 @@ return [
             'icon' => 'http://jira.example.com/images/icons/priorities/major.png'
         ]
     ],
-    'text'  => 'Deleted issue by'
+    'comment' => [
+        'author' => 'iantipenko',
+        'body'   => 'asdasd'
+    ],
+    'text'    => 'Added comment by'
 ];
