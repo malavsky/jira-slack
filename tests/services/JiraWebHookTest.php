@@ -37,6 +37,10 @@ class JiraWebHookTest extends PHPUnit_Framework_TestCase
                 require __DIR__ . '/../fixtures/issue_updated_expected.php'
             ],
             [
+                file_get_contents(__DIR__ . '/../fixtures/issue_updated_with_comment.json'),
+                require __DIR__ . '/../fixtures/issue_updated_with_comment_expected.php'
+            ],
+            [
                 file_get_contents(__DIR__ . '/../fixtures/issue_deleted.json'),
                 require __DIR__ . '/../fixtures/issue_deleted_expected.php'
             ],
