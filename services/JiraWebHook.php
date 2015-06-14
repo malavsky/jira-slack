@@ -93,6 +93,11 @@ class JiraWebHook
         ];
     }
 
+    /**
+     * @todo This method is not used anymore
+     * @param $jiraData
+     * @return array
+     */
     private function getStatusData($jiraData)
     {
         return [
@@ -123,6 +128,7 @@ class JiraWebHook
     private function getLink($url, $issueNumber)
     {
         $parsedUrl = parse_url($url);
-        return $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . '/browse/' . $issueNumber;
+        $port = isset($parsedUrl['port']) ? ':' . $parsedUrl['port'] : '';
+        return $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . $port . '/browse/' . $issueNumber;
     }
 }

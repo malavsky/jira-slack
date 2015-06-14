@@ -1,6 +1,7 @@
 <?php
 namespace tests\services;
 
+use Aivus\TestHelper\TestHelper;
 use PHPUnit_Framework_TestCase;
 use Services\JiraWebHook;
 
@@ -9,15 +10,21 @@ class JiraWebHookTest extends PHPUnit_Framework_TestCase
     /** @var JiraWebHook */
     protected $jiraWebHook;
 
+    /** @var TestHelper */
+    private $testHelper;
+
     protected function setUp()
     {
         parent::setUp();
+        $this->testHelper  = new TestHelper();
         $this->jiraWebHook = new JiraWebHook();
     }
 
     /**
      * @dataProvider providerPrepareData
+     *
      * @param string $data
+     * @param array  $expected
      */
     public function testPrepareData($data, $expected)
     {
@@ -51,6 +58,45 @@ class JiraWebHookTest extends PHPUnit_Framework_TestCase
             [
                 'invalid data',
                 false
+            ]
+        ];
+    }
+
+    /**
+     * @dataProvider providerTestGetLink
+     *
+     * @param $parameters
+     * @param $expectedResult
+     */
+    public function testGetLink($parameters, $expectedResult)
+    {
+        $actualResult = $this->testHelper->invokeMethod($this->jiraWebHook, 'getLink', $parameters);
+        $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    public function providerTestGetLink()
+    {
+        return [
+            [
+                [
+                    'http://jira.example.com/somepath',
+                    'PROJECT-111',
+                ],
+                'http://jira.example.com/browse/PROJECT-111'
+            ],
+            [
+                [
+                    'https://jira.example.com/somepath',
+                    'PROJECT-111',
+                ],
+                'https://jira.example.com/browse/PROJECT-111'
+            ],
+            [
+                [
+                    'http://jira.example.com:8080/somepath',
+                    'PROJECT-111',
+                ],
+                'http://jira.example.com:8080/browse/PROJECT-111'
             ]
         ];
     }
