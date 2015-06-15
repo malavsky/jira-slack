@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d6659b39f73783915155e7e8ce43abd1",
+    "hash": "0664a42ba0432edd01a9b8cc67a55b1a",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -748,6 +748,51 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "aivus/test-helper",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aivus/test-helper.git",
+                "reference": "0de345f5f5f83c03d8d8c61eb2234e4a7fbbaf47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aivus/test-helper/zipball/0de345f5f5f83c03d8d8c61eb2234e4a7fbbaf47",
+                "reference": "0de345f5f5f83c03d8d8c61eb2234e4a7fbbaf47",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.7.*",
+                "satooshi/php-coveralls": "~0.6@stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Aivus\\TestHelper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ilya Antipenko",
+                    "email": "ilya@antipenko.pp.ua"
+                }
+            ],
+            "description": "Helper package for testing",
+            "keywords": [
+                "helper",
+                "testing",
+                "unit"
+            ],
+            "time": "2015-06-14 22:33:12"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.0.4",
