@@ -93,19 +93,6 @@ class JiraWebHook
         ];
     }
 
-    /**
-     * @todo This method is not used anymore
-     * @param $jiraData
-     * @return array
-     */
-    private function getStatusData($jiraData)
-    {
-        return [
-            'name' => $jiraData->issue->fields->status->name,
-            'icon' => $jiraData->issue->fields->status->iconUrl
-        ];
-    }
-
     private function getUserData($jiraData)
     {
         return [
