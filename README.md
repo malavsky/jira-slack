@@ -3,8 +3,9 @@
 [![Code Climate](https://codeclimate.com/github/malavsky/jira-slack/badges/gpa.svg)](https://codeclimate.com/github/malavsky/jira-slack)
 [![Coverage Status](https://coveralls.io/repos/malavsky/jira-slack/badge.svg?branch=develop)](https://coveralls.io/r/malavsky/jira-slack?branch=develop)
 
-Configuring
+Installation
 -----------
+* Clone this repo
 * Run `composer install`
 * Create `jira-slack/config/yml/projectToSlackWebHook.yml` based on `jira-slack/config/yml/projectToSlackWebHook.yml.dist` (Remove `test` integration)
 * Create `jira-slack/config/yml/config.yml` based on `jira-slack/config/yml/config.yml.dist`. (`securityToken` is your own token for access to jira-slack integration admin.)
