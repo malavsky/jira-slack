@@ -9,6 +9,7 @@ Installation
 * Run `composer install`
 * Create `jira-slack/config/yml/projectToSlackWebHook.yml` based on `jira-slack/config/yml/projectToSlackWebHook.yml.dist` (Remove `test` integration)
 * Create `jira-slack/config/yml/config.yml` based on `jira-slack/config/yml/config.yml.dist`. (`securityToken` is your own token for access to jira-slack integration admin.)
+* [Configure your webserver](http://silex.sensiolabs.org/doc/web_servers.html)
 
 Usage
 -----
